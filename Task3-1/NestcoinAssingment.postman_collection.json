@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "c78ecba8-780e-4478-9320-182cf3389b6f",
+		"name": "NestcoinAssingment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://reqres.in/api/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"API Status Code\"] = responseCode.code == 201 ;\r",
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"check id not null\"]= response.id!= null;\r",
+							"tests[\"Validate Response Body-createAt\"] = responseBody.has(\"createdAt\")\r",
+							"tests[\"Validate Response Body for id\"] = responseBody.has(\"id\")\r",
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"Check Job\"]= response.job== \"Developer\";\r",
+							"tests[\"name of person\"]= response.name== \"Monica\";\r",
+							"pm.test (\"check Content-Type-Header\"), function ()\r",
+							"{\r",
+							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.2.587539246.1642754821; __stripe_mid=0b4f3747-da03-4e21-84fb-f60746d44a0fdf96ac; _gid=GA1.2.919592836.1644652930; __stripe_sid=0234c9ab-b1f3-4bad-b1fe-e968e3b557b423f002; _gat=1; _gat_gtag_UA_174008107_1=1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Monica\",\r\n\"job\": \"Developer\"\r\n}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://reqres.in/api/users/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"API Status Code\"] = responseCode.code == 200 ;\r",
+							"tests[\"Validate Response Body\"] = responseBody.has(\"id\")\r",
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"email id\"]= response.data.email== \"eve.holt@reqres.in\";\r",
+							"tests[\"Verify firstname\"] = response.data.first_name== \"Eve\";\r",
+							"tests[\"last name\"]= response.data.last_name== \"Holt\";\r",
+							"pm.test (\"check Content-Type-Header\"), function ()\r",
+							"{\r",
+							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE-https://reqres.in/api/users/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"API Status Code\"] = responseCode.code == 200 ;\r",
+							"var response = JSON.parse(responseBody);\r",
+							"tests[\"check job not null\"]= response.job!= null;\r",
+							"pm.test (\"check Content-Type-Header\"), function ()\r",
+							"{\r",
+							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.2.587539246.1642754821; __stripe_mid=0b4f3747-da03-4e21-84fb-f60746d44a0fdf96ac; _gid=GA1.2.919592836.1644652930; __stripe_sid=a73bd049-4147-4fad-b1e1-f1c9b112aa9cb8ed1b"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Eve2\",\"job\":\"Holt\"}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,2 @@
+One of the possible causes for rolling back in Production, is the production’s data issue. There are some old data in Production that may have issues with the new features.
+The other possible cause is the Third Party services, for example when the version in test environment was not upgraded which is an operation issue, i.e. test environment and production environment not synch version-wise.
